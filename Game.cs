@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using static System.Console;
 using System.IO;
@@ -455,7 +455,7 @@ namespace MurderMystereee
                 WriteLine("Who do you think it is?");
                 foreach (Victim npc in characterList)
                 {
-                    WriteLine(npc.name);
+                    WriteLine(npc.name + " the " + npc.occupation);
                 }
                 choice = ReadLine();
                 if (choice.ToLower() == murderVic.murderer.name.ToLower() && player.inventory.Contains(murderVic.murderer.weapon))
@@ -575,16 +575,19 @@ namespace MurderMystereee
                             ReadKey();
                             WriteLine($"{Doctor.name}: I remembered something about the person I bumped into! They smelled like vanilla. Does that help?");
                             Notes("The main suspect likely smells like vanilla");
+                            Doctor.talkCounter++;
                             break;
 
                         case 2:
                             WriteLine($"{Doctor.name}: Judging by the wounds, it looks like his neck was torn up. It was either a vicious beast or, well... One of those daggers with jagged edges, I suppose. I thought I saw something" +
                                 $" like that somewhere in this manor but I can't for the life of me recall where...");
                             Notes("The murder weapon is likely a serrated dagger");
+                            Doctor.talkCounter++;
                             break;
 
                         case 3:
                             WriteLine($"{Doctor.name}: Ah, you might find it if you searched his pockets, but I did write up a prescription for arsenic.. ");
+                            Doctor.talkCounter++;
                             break;
                         default:
                             WriteLine($"{Doctor.name}: Perdon?");
@@ -690,14 +693,17 @@ namespace MurderMystereee
                             ReadKey();
                             WriteLine($"{Sailor.name}: Yeah, it was in the bar! I may have, er, kicked it to check, but it's still put together. Dunno where it goes, though, I don't pay attention.");
                             Notes("Check the bar for something hidden");
+                            Sailor.talkCounter++;
                             break;
 
                         case 2:
                             WriteLine($"{Sailor.name}: {murderVic.name}, oh, {murderVic.name}, that hearty bastard. He promised he'd drink me under the table, not 6 feet under! What a loss.");
+                            Sailor.talkCounter++;
                             break;
 
                         case 3:
                             WriteLine($"{Sailor.name}: We just met, but there's something familiar about everyone here... Hm...");
+                            Sailor.talkCounter++;
                             break;
                         default:
                             WriteLine($"{Sailor.name}: Ah?");
